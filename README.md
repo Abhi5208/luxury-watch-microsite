@@ -27,3 +27,9 @@ Minimal repository template for planning, building, QA, and releasing freelance 
 ## Code Location
 
 All implementation files belong inside `/code`.
+
+Copyright © 2026 Abhishek R.
+All rights reserved.
+
+This repository is shared for portfolio and review purposes only.
+No permission is granted to copy, modify, redistribute, or use this code or its assets without explicit written permission.
