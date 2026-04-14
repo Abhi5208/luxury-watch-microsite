@@ -1,0 +1,11 @@
+findings:
+  - id: "[finding-id]"
+    title: "[finding title]"
+    severity: "[low|medium|high|critical]"
+    status: "[open|fixed|verified|wont-fix]"
+    area: "[area]"
+    steps:
+      - "[step]"
+    expected: "[expected result]"
+    actual: "[actual result]"
+    owner: "[owner]"
