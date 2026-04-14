@@ -1,14 +1,14 @@
-# Freelance Project Template
+# luxury-watch-microsite
 
 ## Purpose
 
-Minimal repository template for planning, building, QA, and releasing freelance projects.
+Planning and delivery workspace for the `luxury-watch-microsite` portfolio project.
 
 ## How To Use
 
 - Fill product files before planning.
 - Refine planning files until implementation is stable.
-- Track build work in `/build`.
+- Track implementation work in `/code`.
 - Track QA in `/qa`.
 - Put all application code in `/code`.
 
@@ -19,7 +19,6 @@ Minimal repository template for planning, building, QA, and releasing freelance 
 - `/planning` - recursive planning and refinement notes
 - `/design` - UI, flows, prototypes, and review assets
 - `/architecture` - technical structure and decisions
-- `/build` - implementation plan and task tracking
 - `/qa` - testing, findings, and release checks
 - `/release` - deployment, runbook, and rollback notes
 - `/code` - all project source code
@@ -28,7 +27,7 @@ Minimal repository template for planning, building, QA, and releasing freelance 
 
 All implementation files belong inside `/code`.
 
-Copyright © 2026 Abhishek R.
+Copyright (c) 2026 Abhishek R.
 All rights reserved.
 
 This repository is shared for portfolio and review purposes only.
