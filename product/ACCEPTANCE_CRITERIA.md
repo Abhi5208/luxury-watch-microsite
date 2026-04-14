@@ -9,7 +9,12 @@
 - Home must remain the flagship storytelling page.
 - About must be a lightweight brand/craft page.
 - Contact must be a functional inquiry page with a form.
-- The Contact form must show toast feedback on submit.
+- The Contact form must be UI-only.
+- The Contact form must validate inputs client-side only.
+- The Contact form must show success toast feedback on valid submit.
+- Form submission does not send data externally.
+- Contact must not include backend handling, API submission, or email sending.
+- If a contact email is shown, it must use fake placeholder copy such as `hello@brand.com`.
 - The site must not include a blog, shop, CMS, or auth flow.
 
 ---
@@ -155,3 +160,6 @@ Measured on production build under standard Lighthouse testing:
 - Heavy user-controlled 3D interaction
 - CMS integration
 - Auth
+- Backend Contact handling
+- API submission
+- Email sending

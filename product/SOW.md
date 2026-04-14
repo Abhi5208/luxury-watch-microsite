@@ -27,7 +27,7 @@ This project is a portfolio-focused build intended to demonstrate:
   - Reassembly
   - Final CTA
 - Lightweight About page focused on brand philosophy and craft
-- Contact page with inquiry form and toast feedback on submit
+- Contact page with UI-only inquiry form, client-side validation, and toast feedback on submit
 - Frame-based animation integration
 - Responsive layout (desktop-first)
 - SEO baseline implementation
@@ -44,7 +44,10 @@ This project is a portfolio-focused build intended to demonstrate:
 - Blog
 - CMS integration
 - Auth
-- Backend services unless explicitly required for form handling
+- Backend services
+- API submission
+- Email sending
+- Real contact handling
 
 ---
 
@@ -63,8 +66,9 @@ This project is a portfolio-focused build intended to demonstrate:
 - Visual assets will be AI-generated (Whisk + Flow pipeline)
 - Desktop experience is primary
 - Mobile experience may be simplified
-- Contact form may use demo-only toast feedback unless a form handling service is selected
-- No external API integrations required unless needed for Contact form delivery
+- Contact form is UI-only and does not send data externally
+- Any displayed contact email must be fake placeholder copy, e.g. `hello@brand.com`
+- No API integrations are required
 
 ---
 

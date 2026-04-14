@@ -32,7 +32,7 @@ Focus: flagship visual storytelling on Home, premium feel, realistic portfolio i
 
 - Home: scroll-driven storytelling and cinematic watch presentation
 - About: lightweight brand/craft page
-- Contact: functional inquiry page with form submit toast feedback
+- Contact: UI-only inquiry page with client-side validation and success toast feedback
 - Minimal UI
 - Desktop-first
 
@@ -65,6 +65,7 @@ Focus: flagship visual storytelling on Home, premium feel, realistic portfolio i
 - Home section transitions
 - About brand/craft content
 - Contact inquiry form
+- Client-side Contact form validation
 - Toast feedback on Contact form submit
 - Minimal text
 
@@ -77,6 +78,9 @@ Focus: flagship visual storytelling on Home, premium feel, realistic portfolio i
 - CMS
 - Auth
 - Product configurator
+- Backend Contact handling
+- API submission
+- Email sending
 
 ---
 
@@ -86,4 +90,12 @@ Focus: flagship visual storytelling on Home, premium feel, realistic portfolio i
 - Animation approach
 - Asset generation (Whisk + Flow)
 - Deployment
-- Contact form behavior: static demo toast only vs external form handling
+
+## Contact Constraints
+
+- Contact form is UI-only.
+- Form validation is client-side only.
+- Form submission shows a success toast after valid input.
+- Form submission does not send data externally.
+- No backend, API, or email sending is included.
+- Use fake placeholder email only if an email address is shown, e.g. `hello@brand.com`.

@@ -158,4 +158,4 @@ Each section:
 - Rendering method
 - Asset format strategy
 - Deployment platform
-- Contact form handling model
+- Contact form field validation rules and toast copy

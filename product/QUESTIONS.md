@@ -9,7 +9,7 @@
 - Should the CTA be only at the end, or also subtly visible earlier?
 - What exact top-level navigation labels should be used: Home / About / Contact, or more branded labels?
 - What concise brand/craft content belongs on About?
-- Should Contact form submission be demo-only toast feedback or connected to a form handling service?
+- What concise fake placeholder contact email should be shown, if any? Default: `hello@brand.com`.
 
 ### Assets
 - Will all watch visuals be AI-generated?

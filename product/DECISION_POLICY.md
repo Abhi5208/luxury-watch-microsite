@@ -28,8 +28,6 @@
   - Whisk + Flow usage
 - Image format and optimization strategy
 - Deployment platform (Vercel / Netlify / other)
-- Contact form handling model:
-  - demo-only toast vs external form service
 - Balance between:
   - visual quality vs performance
 
@@ -40,6 +38,7 @@
 - Experience style (cinematic, scroll-based)
 - Site structure (Home, About, Contact)
 - Home story flow (reveal → dissection → reassembly)
+- Contact behavior (UI-only, client-side validation, success toast, no external data sending)
 - Interaction level (minimal, scroll-driven)
 - CTA behavior (soft, non-aggressive)
 - Audience and positioning (luxury, high-end)
