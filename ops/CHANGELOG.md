@@ -11,5 +11,8 @@ Track meaningful project changes.
 - Added: Next.js App Router project scaffold in `code/app`.
 - Added: Next.js Home page frame sequence component with GSAP ScrollTrigger.
 - Added: Shared site shell plus About and Contact page content.
+- Added: Subtle animation-section depth layers synced to scroll progress.
+- Changed: Synced animation-section narrative text motion to ScrollTrigger progress.
+- Changed: Upgraded Home page storytelling, section rhythm, and scroll narrative copy.
 - Changed: `[placeholder]`
 - Fixed: `[placeholder]`

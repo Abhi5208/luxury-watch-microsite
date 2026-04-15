@@ -2,46 +2,83 @@ import FrameSequence from "@/components/FrameSequence";
 
 export default function Home() {
   return (
-    <main>
-      <section className="home-section home-section--hero" aria-labelledby="hero-title">
-        <div className="home-section__content">
-          <h1 id="hero-title">Precision in Shadow</h1>
-          <p>A luxury watch microsite built around detail, motion, and restraint.</p>
+    <main className="home-story">
+      <section className="story-hero" aria-labelledby="hero-title">
+        <div className="story-hero__inner">
+          <p className="story-kicker">Atelier Noir / Mechanical Study</p>
+          <h1 id="hero-title">A watch revealed by restraint.</h1>
+          <p>
+            Precision, shadow, and controlled motion shape a product story built
+            for close attention.
+          </p>
         </div>
       </section>
 
       <FrameSequence />
 
-      <section className="home-section" aria-labelledby="craftsmanship-title">
-        <div className="home-section__content">
+      <section
+        className="story-section story-section--left story-section--tall"
+        aria-labelledby="craftsmanship-title"
+      >
+        <div className="story-section__content">
+          <p className="story-kicker">Craftsmanship</p>
           <h2 id="craftsmanship-title">Craftsmanship</h2>
-          <p>Every surface is shaped for balance, reflection, and control.</p>
-          <p>The case, dial, and profile work together with quiet precision.</p>
+          <p>
+            The design language is quiet, but not empty. The case profile,
+            crown, dial, and glass are treated as one continuous object, tuned
+            for balance in low light and close inspection.
+          </p>
         </div>
       </section>
 
-      <section className="home-section" aria-labelledby="materials-title">
-        <div className="home-section__content">
-          <h2 id="materials-title">Materials</h2>
-          <p>Dark polished finishes meet crisp highlights and clean contrast.</p>
-          <p>Metal, glass, and shadow carry the product without distraction.</p>
+      <section className="story-section story-section--right" aria-labelledby="materials-title">
+        <div className="story-section__content">
+          <p className="story-kicker">Materials</p>
+          <h2 id="materials-title">Metal, glass, finish.</h2>
+          <p>
+            The watch depends on a reduced material palette: polished metal for
+            structure, glass for depth, and finishing that catches only the
+            light it needs.
+          </p>
+          <div className="material-grid" aria-label="Material notes">
+            <div>
+              <span>Metal</span>
+              <p>Clean geometry with sharp reflections and controlled mass.</p>
+            </div>
+            <div>
+              <span>Glass</span>
+              <p>Depth and highlight without interrupting the dial.</p>
+            </div>
+            <div>
+              <span>Finish</span>
+              <p>Dark surfaces, fine edges, and disciplined contrast.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="home-section" aria-labelledby="movement-title">
-        <div className="home-section__content">
-          <h2 id="movement-title">Movement</h2>
-          <p>The internal mechanism is presented as the core of the experience.</p>
-          <p>Scroll-driven motion gives the sequence a precise, deliberate pace.</p>
+      <section
+        className="story-section story-section--left story-section--compact"
+        aria-labelledby="movement-title"
+      >
+        <div className="story-section__content">
+          <p className="story-kicker">Movement</p>
+          <h2 id="movement-title">Engineered to be read slowly.</h2>
+          <p>
+            The internal architecture is not decoration. It is the product
+            narrative: layers, tolerances, rhythm, and tension brought forward
+            through scroll-controlled motion.
+          </p>
         </div>
       </section>
 
-      <section className="home-section" aria-labelledby="cta-title">
-        <div className="home-section__content">
-          <h2 id="cta-title">Experience the Collection</h2>
-          <p>A focused product story for a premium watch launch.</p>
-          <a className="home-section__link" href="#hero-title">
-            Explore
+      <section className="story-cta" aria-labelledby="cta-title">
+        <div className="story-cta__inner">
+          <p className="story-kicker">Private Preview</p>
+          <h2 id="cta-title">The collection begins in silence.</h2>
+          <p>Register interest for the first release window.</p>
+          <a className="story-link" href="/contact">
+            Request Access
           </a>
         </div>
       </section>
