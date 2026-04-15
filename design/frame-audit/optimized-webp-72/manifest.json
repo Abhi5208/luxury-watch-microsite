@@ -1,0 +1,450 @@
+{
+  "source_archive": "frames.zip",
+  "source_frame_count": 242,
+  "output_frame_count": 72,
+  "source_dimensions": [
+    1280,
+    1280
+  ],
+  "output_dimensions": [
+    1080,
+    1080
+  ],
+  "format": "WebP",
+  "quality": 86,
+  "sampling": "even timeline sampling, first and last frame preserved",
+  "frames": [
+    {
+      "frame": 0,
+      "source": "ffout001.gif",
+      "source_index": 1,
+      "file": "watch-scroll-000.webp"
+    },
+    {
+      "frame": 1,
+      "source": "ffout004.gif",
+      "source_index": 4,
+      "file": "watch-scroll-001.webp"
+    },
+    {
+      "frame": 2,
+      "source": "ffout008.gif",
+      "source_index": 8,
+      "file": "watch-scroll-002.webp"
+    },
+    {
+      "frame": 3,
+      "source": "ffout011.gif",
+      "source_index": 11,
+      "file": "watch-scroll-003.webp"
+    },
+    {
+      "frame": 4,
+      "source": "ffout015.gif",
+      "source_index": 15,
+      "file": "watch-scroll-004.webp"
+    },
+    {
+      "frame": 5,
+      "source": "ffout018.gif",
+      "source_index": 18,
+      "file": "watch-scroll-005.webp"
+    },
+    {
+      "frame": 6,
+      "source": "ffout021.gif",
+      "source_index": 21,
+      "file": "watch-scroll-006.webp"
+    },
+    {
+      "frame": 7,
+      "source": "ffout025.gif",
+      "source_index": 25,
+      "file": "watch-scroll-007.webp"
+    },
+    {
+      "frame": 8,
+      "source": "ffout028.gif",
+      "source_index": 28,
+      "file": "watch-scroll-008.webp"
+    },
+    {
+      "frame": 9,
+      "source": "ffout032.gif",
+      "source_index": 32,
+      "file": "watch-scroll-009.webp"
+    },
+    {
+      "frame": 10,
+      "source": "ffout035.gif",
+      "source_index": 35,
+      "file": "watch-scroll-010.webp"
+    },
+    {
+      "frame": 11,
+      "source": "ffout038.gif",
+      "source_index": 38,
+      "file": "watch-scroll-011.webp"
+    },
+    {
+      "frame": 12,
+      "source": "ffout042.gif",
+      "source_index": 42,
+      "file": "watch-scroll-012.webp"
+    },
+    {
+      "frame": 13,
+      "source": "ffout045.gif",
+      "source_index": 45,
+      "file": "watch-scroll-013.webp"
+    },
+    {
+      "frame": 14,
+      "source": "ffout049.gif",
+      "source_index": 49,
+      "file": "watch-scroll-014.webp"
+    },
+    {
+      "frame": 15,
+      "source": "ffout052.gif",
+      "source_index": 52,
+      "file": "watch-scroll-015.webp"
+    },
+    {
+      "frame": 16,
+      "source": "ffout055.gif",
+      "source_index": 55,
+      "file": "watch-scroll-016.webp"
+    },
+    {
+      "frame": 17,
+      "source": "ffout059.gif",
+      "source_index": 59,
+      "file": "watch-scroll-017.webp"
+    },
+    {
+      "frame": 18,
+      "source": "ffout062.gif",
+      "source_index": 62,
+      "file": "watch-scroll-018.webp"
+    },
+    {
+      "frame": 19,
+      "source": "ffout065.gif",
+      "source_index": 65,
+      "file": "watch-scroll-019.webp"
+    },
+    {
+      "frame": 20,
+      "source": "ffout069.gif",
+      "source_index": 69,
+      "file": "watch-scroll-020.webp"
+    },
+    {
+      "frame": 21,
+      "source": "ffout072.gif",
+      "source_index": 72,
+      "file": "watch-scroll-021.webp"
+    },
+    {
+      "frame": 22,
+      "source": "ffout076.gif",
+      "source_index": 76,
+      "file": "watch-scroll-022.webp"
+    },
+    {
+      "frame": 23,
+      "source": "ffout079.gif",
+      "source_index": 79,
+      "file": "watch-scroll-023.webp"
+    },
+    {
+      "frame": 24,
+      "source": "ffout082.gif",
+      "source_index": 82,
+      "file": "watch-scroll-024.webp"
+    },
+    {
+      "frame": 25,
+      "source": "ffout086.gif",
+      "source_index": 86,
+      "file": "watch-scroll-025.webp"
+    },
+    {
+      "frame": 26,
+      "source": "ffout089.gif",
+      "source_index": 89,
+      "file": "watch-scroll-026.webp"
+    },
+    {
+      "frame": 27,
+      "source": "ffout093.gif",
+      "source_index": 93,
+      "file": "watch-scroll-027.webp"
+    },
+    {
+      "frame": 28,
+      "source": "ffout096.gif",
+      "source_index": 96,
+      "file": "watch-scroll-028.webp"
+    },
+    {
+      "frame": 29,
+      "source": "ffout099.gif",
+      "source_index": 99,
+      "file": "watch-scroll-029.webp"
+    },
+    {
+      "frame": 30,
+      "source": "ffout103.gif",
+      "source_index": 103,
+      "file": "watch-scroll-030.webp"
+    },
+    {
+      "frame": 31,
+      "source": "ffout106.gif",
+      "source_index": 106,
+      "file": "watch-scroll-031.webp"
+    },
+    {
+      "frame": 32,
+      "source": "ffout110.gif",
+      "source_index": 110,
+      "file": "watch-scroll-032.webp"
+    },
+    {
+      "frame": 33,
+      "source": "ffout113.gif",
+      "source_index": 113,
+      "file": "watch-scroll-033.webp"
+    },
+    {
+      "frame": 34,
+      "source": "ffout116.gif",
+      "source_index": 116,
+      "file": "watch-scroll-034.webp"
+    },
+    {
+      "frame": 35,
+      "source": "ffout120.gif",
+      "source_index": 120,
+      "file": "watch-scroll-035.webp"
+    },
+    {
+      "frame": 36,
+      "source": "ffout123.gif",
+      "source_index": 123,
+      "file": "watch-scroll-036.webp"
+    },
+    {
+      "frame": 37,
+      "source": "ffout127.gif",
+      "source_index": 127,
+      "file": "watch-scroll-037.webp"
+    },
+    {
+      "frame": 38,
+      "source": "ffout130.gif",
+      "source_index": 130,
+      "file": "watch-scroll-038.webp"
+    },
+    {
+      "frame": 39,
+      "source": "ffout133.gif",
+      "source_index": 133,
+      "file": "watch-scroll-039.webp"
+    },
+    {
+      "frame": 40,
+      "source": "ffout137.gif",
+      "source_index": 137,
+      "file": "watch-scroll-040.webp"
+    },
+    {
+      "frame": 41,
+      "source": "ffout140.gif",
+      "source_index": 140,
+      "file": "watch-scroll-041.webp"
+    },
+    {
+      "frame": 42,
+      "source": "ffout144.gif",
+      "source_index": 144,
+      "file": "watch-scroll-042.webp"
+    },
+    {
+      "frame": 43,
+      "source": "ffout147.gif",
+      "source_index": 147,
+      "file": "watch-scroll-043.webp"
+    },
+    {
+      "frame": 44,
+      "source": "ffout150.gif",
+      "source_index": 150,
+      "file": "watch-scroll-044.webp"
+    },
+    {
+      "frame": 45,
+      "source": "ffout154.gif",
+      "source_index": 154,
+      "file": "watch-scroll-045.webp"
+    },
+    {
+      "frame": 46,
+      "source": "ffout157.gif",
+      "source_index": 157,
+      "file": "watch-scroll-046.webp"
+    },
+    {
+      "frame": 47,
+      "source": "ffout161.gif",
+      "source_index": 161,
+      "file": "watch-scroll-047.webp"
+    },
+    {
+      "frame": 48,
+      "source": "ffout164.gif",
+      "source_index": 164,
+      "file": "watch-scroll-048.webp"
+    },
+    {
+      "frame": 49,
+      "source": "ffout167.gif",
+      "source_index": 167,
+      "file": "watch-scroll-049.webp"
+    },
+    {
+      "frame": 50,
+      "source": "ffout171.gif",
+      "source_index": 171,
+      "file": "watch-scroll-050.webp"
+    },
+    {
+      "frame": 51,
+      "source": "ffout174.gif",
+      "source_index": 174,
+      "file": "watch-scroll-051.webp"
+    },
+    {
+      "frame": 52,
+      "source": "ffout178.gif",
+      "source_index": 178,
+      "file": "watch-scroll-052.webp"
+    },
+    {
+      "frame": 53,
+      "source": "ffout181.gif",
+      "source_index": 181,
+      "file": "watch-scroll-053.webp"
+    },
+    {
+      "frame": 54,
+      "source": "ffout184.gif",
+      "source_index": 184,
+      "file": "watch-scroll-054.webp"
+    },
+    {
+      "frame": 55,
+      "source": "ffout188.gif",
+      "source_index": 188,
+      "file": "watch-scroll-055.webp"
+    },
+    {
+      "frame": 56,
+      "source": "ffout191.gif",
+      "source_index": 191,
+      "file": "watch-scroll-056.webp"
+    },
+    {
+      "frame": 57,
+      "source": "ffout194.gif",
+      "source_index": 194,
+      "file": "watch-scroll-057.webp"
+    },
+    {
+      "frame": 58,
+      "source": "ffout198.gif",
+      "source_index": 198,
+      "file": "watch-scroll-058.webp"
+    },
+    {
+      "frame": 59,
+      "source": "ffout201.gif",
+      "source_index": 201,
+      "file": "watch-scroll-059.webp"
+    },
+    {
+      "frame": 60,
+      "source": "ffout205.gif",
+      "source_index": 205,
+      "file": "watch-scroll-060.webp"
+    },
+    {
+      "frame": 61,
+      "source": "ffout208.gif",
+      "source_index": 208,
+      "file": "watch-scroll-061.webp"
+    },
+    {
+      "frame": 62,
+      "source": "ffout211.gif",
+      "source_index": 211,
+      "file": "watch-scroll-062.webp"
+    },
+    {
+      "frame": 63,
+      "source": "ffout215.gif",
+      "source_index": 215,
+      "file": "watch-scroll-063.webp"
+    },
+    {
+      "frame": 64,
+      "source": "ffout218.gif",
+      "source_index": 218,
+      "file": "watch-scroll-064.webp"
+    },
+    {
+      "frame": 65,
+      "source": "ffout222.gif",
+      "source_index": 222,
+      "file": "watch-scroll-065.webp"
+    },
+    {
+      "frame": 66,
+      "source": "ffout225.gif",
+      "source_index": 225,
+      "file": "watch-scroll-066.webp"
+    },
+    {
+      "frame": 67,
+      "source": "ffout228.gif",
+      "source_index": 228,
+      "file": "watch-scroll-067.webp"
+    },
+    {
+      "frame": 68,
+      "source": "ffout232.gif",
+      "source_index": 232,
+      "file": "watch-scroll-068.webp"
+    },
+    {
+      "frame": 69,
+      "source": "ffout235.gif",
+      "source_index": 235,
+      "file": "watch-scroll-069.webp"
+    },
+    {
+      "frame": 70,
+      "source": "ffout239.gif",
+      "source_index": 239,
+      "file": "watch-scroll-070.webp"
+    },
+    {
+      "frame": 71,
+      "source": "ffout242.gif",
+      "source_index": 242,
+      "file": "watch-scroll-071.webp"
+    }
+  ]
+}
