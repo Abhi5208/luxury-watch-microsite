@@ -8,6 +8,8 @@ const FRAME_COUNT = 72;
 const CANVAS_SIZE = 1080;
 const FRAME_PATH = "/frame-audit/optimized-webp-72/watch-scroll-{index}.webp";
 const FALLBACK_VIDEO_PATH = "/frame-audit/watch-scroll-72-1080p.mp4";
+const FRAME_SMOOTHING_MIN = 0.1;
+const FRAME_SMOOTHING_MAX = 0.22;
 const NARRATIVE_PHASES = [
   {
     eyebrow: "01 Introduction",
@@ -56,6 +58,27 @@ function loadDecodedImage(src: string) {
   });
 }
 
+function textState(localProgress: number, delay: number) {
+  const fadeIn = gsap.utils.clamp(0, 1, (localProgress - delay) / 0.22);
+  const fadeOut = gsap.utils.clamp(0, 1, (1 - localProgress) / (0.24 + delay));
+  const opacity = Math.min(fadeIn, fadeOut);
+
+  return {
+    opacity,
+    y: gsap.utils.interpolate(18, -4, opacity),
+  };
+}
+
+function nearestDecodedFrameIndex(images: HTMLImageElement[], targetIndex: number) {
+  for (let index = targetIndex; index >= 0; index -= 1) {
+    if (images[index]) {
+      return index;
+    }
+  }
+
+  return -1;
+}
+
 export default function FrameSequence() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -75,7 +98,9 @@ export default function FrameSequence() {
     const context = canvas?.getContext("2d", { alpha: false });
     const backgroundLayer = backgroundLayerRef.current;
     const foregroundLayer = foregroundLayerRef.current;
-    const phaseElements = phaseRefs.current.filter(Boolean);
+    const phaseElements = phaseRefs.current.filter(
+      (element): element is HTMLDivElement => Boolean(element),
+    );
 
     if (!section || !canvas || !context) {
       return;
@@ -84,7 +109,9 @@ export default function FrameSequence() {
     gsap.registerPlugin(ScrollTrigger);
 
     let active = true;
+    let initialized = false;
     let rafId = 0;
+    let renderQueued = false;
     let trigger: ScrollTrigger | null = null;
     let targetFrame = 0;
     let currentFrame = 0;
@@ -93,14 +120,24 @@ export default function FrameSequence() {
 
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = "high";
-    gsap.set(phaseElements, { autoAlpha: 0, y: 28 });
-    gsap.set(phaseElements[0], { autoAlpha: 1, y: 0 });
+    gsap.set(phaseElements, { autoAlpha: 1 });
+    gsap.set(section.querySelectorAll(".frame-sequence__item"), { autoAlpha: 0, y: 18 });
+    const firstPhaseItems = phaseElements[0]?.querySelectorAll(".frame-sequence__item");
+
+    if (firstPhaseItems) {
+      gsap.set(firstPhaseItems, {
+        autoAlpha: 1,
+        y: -4,
+      });
+    }
     gsap.set(backgroundLayer, { y: 18, scale: 1 });
     gsap.set(foregroundLayer, { y: -12, opacity: 0.14 });
 
     const drawFrame = (frameIndex: number) => {
       const boundedIndex = Math.max(0, Math.min(FRAME_COUNT - 1, frameIndex));
-      const image = images[boundedIndex];
+      const fallbackIndex = nearestDecodedFrameIndex(images, boundedIndex);
+      const imageIndex = images[boundedIndex] ? boundedIndex : fallbackIndex;
+      const image = images[imageIndex];
 
       if (!image) {
         return;
@@ -108,12 +145,18 @@ export default function FrameSequence() {
 
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(image, 0, 0, canvas.width, canvas.height);
-      renderedFrame = boundedIndex;
+      renderedFrame = imageIndex;
     };
 
     const render = () => {
+      renderQueued = false;
       const delta = targetFrame - currentFrame;
-      currentFrame += delta * 0.18;
+      const smoothing = gsap.utils.clamp(
+        FRAME_SMOOTHING_MIN,
+        FRAME_SMOOTHING_MAX,
+        Math.abs(delta) / 20,
+      );
+      currentFrame += delta * smoothing;
 
       if (Math.abs(delta) < 0.01) {
         currentFrame = targetFrame;
@@ -124,105 +167,159 @@ export default function FrameSequence() {
         drawFrame(nextFrame);
       }
 
-      rafId = window.requestAnimationFrame(render);
-    };
-
-    const start = async () => {
-      try {
-        images[0] = await loadDecodedImage(frameUrl(0));
-        if (!active) {
-          return;
-        }
-
-        drawFrame(0);
-
-        const remainingFrames = await Promise.all(
-          Array.from({ length: FRAME_COUNT - 1 }, (_, offset) =>
-            loadDecodedImage(frameUrl(offset + 1)),
-          ),
-        );
-
-        if (!active) {
-          return;
-        }
-
-        remainingFrames.forEach((image, index) => {
-          images[index + 1] = image;
-        });
-
-        trigger = ScrollTrigger.create({
-          trigger: section,
-          start: "top top",
-          end: "+=260%",
-          pin: true,
-          scrub: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            /*
-              ScrollTrigger progress is normalized from 0 to 1.
-              Multiplying by FRAME_COUNT - 1 maps the pinned scroll range
-              to the sequence indexes, so the first scroll position renders
-              frame 0 and the final scroll position renders frame 71.
-            */
-            targetFrame = self.progress * (FRAME_COUNT - 1);
-
-            /*
-              Depth layers reuse the same scroll progress:
-              the background moves through a smaller range for slower depth,
-              while the foreground reflection moves a little farther to feel
-              closer to the viewer. Both stay subtle to keep the watch dominant.
-            */
-            gsap.set(backgroundLayer, {
-              y: gsap.utils.interpolate(18, -18, self.progress),
-              scale: gsap.utils.interpolate(1, 1.04, self.progress),
-            });
-            gsap.set(foregroundLayer, {
-              y: gsap.utils.interpolate(-16, 22, self.progress),
-              opacity: gsap.utils.interpolate(0.1, 0.18, self.progress),
-            });
-
-            /*
-              The same normalized progress also drives the text overlay.
-              Each phase owns an equal progress range:
-              0.00-0.25 introduction, 0.25-0.50 detail,
-              0.50-0.75 engineering, 0.75-1.00 final reveal.
-              Local phase progress fades the copy in near the start,
-              keeps it dominant through the middle, then fades it out
-              while moving it down slightly before the next phase takes over.
-            */
-            phaseElements.forEach((element, index) => {
-              const phaseStart = index / NARRATIVE_PHASES.length;
-              const phaseEnd = (index + 1) / NARRATIVE_PHASES.length;
-              const phaseDuration = phaseEnd - phaseStart;
-              const localProgress = gsap.utils.clamp(
-                0,
-                1,
-                (self.progress - phaseStart) / phaseDuration,
-              );
-              const fadeIn = gsap.utils.clamp(0, 1, localProgress / 0.28);
-              const fadeOut = gsap.utils.clamp(0, 1, (1 - localProgress) / 0.28);
-              const opacity = Math.min(fadeIn, fadeOut);
-              const y = gsap.utils.interpolate(24, -8, opacity);
-
-              gsap.set(element, {
-                autoAlpha: opacity,
-                y,
-              });
-            });
-          },
-        });
-
+      if (Math.abs(targetFrame - currentFrame) > 0.01) {
+        renderQueued = true;
         rafId = window.requestAnimationFrame(render);
-      } catch (error) {
-        console.error(error);
       }
     };
 
-    void start();
+    const scheduleRender = () => {
+      if (renderQueued) {
+        return;
+      }
+
+      renderQueued = true;
+      rafId = window.requestAnimationFrame(render);
+    };
+
+    const loadRemainingFrames = () => {
+      Array.from({ length: FRAME_COUNT - 1 }, (_, offset) => offset + 1).forEach((frameIndex) => {
+        void loadDecodedImage(frameUrl(frameIndex))
+          .then((image) => {
+            if (!active) {
+              return;
+            }
+
+            images[frameIndex] = image;
+            scheduleRender();
+          })
+          .catch(() => undefined);
+      });
+    };
+
+    const createTrigger = () => {
+      if (initialized) {
+        return;
+      }
+
+      initialized = true;
+      trigger = ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "+=260%",
+        pin: true,
+        scrub: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          /*
+            ScrollTrigger progress is normalized from 0 to 1.
+            Multiplying by FRAME_COUNT - 1 maps the pinned scroll range
+            to the sequence indexes, so the first scroll position renders
+            frame 0 and the final scroll position renders frame 71.
+          */
+          targetFrame = self.progress * (FRAME_COUNT - 1);
+          scheduleRender();
+
+          /*
+            Depth layers reuse the same scroll progress:
+            the background moves through a smaller range for slower depth,
+            while the foreground reflection moves a little farther to feel
+            closer to the viewer. Both stay subtle to keep the watch dominant.
+          */
+          gsap.set(backgroundLayer, {
+            y: gsap.utils.interpolate(18, -18, self.progress),
+            scale: gsap.utils.interpolate(1, 1.04, self.progress),
+          });
+          gsap.set(foregroundLayer, {
+            y: gsap.utils.interpolate(-16, 22, self.progress),
+            opacity: gsap.utils.interpolate(0.1, 0.18, self.progress),
+          });
+
+          /*
+            The same normalized progress also drives the text overlay.
+            Each phase owns an equal progress range:
+            0.00-0.25 introduction, 0.25-0.50 detail,
+            0.50-0.75 engineering, 0.75-1.00 final reveal.
+            Local phase progress fades the copy in near the start,
+            keeps it dominant through the middle, then fades it out
+            while moving it down slightly before the next phase takes over.
+            The eyebrow, heading, and paragraph use small offsets so the
+            overlay reads as a composed reveal instead of one abrupt layer.
+          */
+          phaseElements.forEach((element, index) => {
+            const phaseStart = index / NARRATIVE_PHASES.length;
+            const phaseEnd = (index + 1) / NARRATIVE_PHASES.length;
+            const phaseDuration = phaseEnd - phaseStart;
+            const localProgress = gsap.utils.clamp(
+              0,
+              1,
+              (self.progress - phaseStart) / phaseDuration,
+            );
+            const items = element.querySelectorAll<HTMLElement>(".frame-sequence__item");
+            const delays = [0, 0.05, 0.1];
+
+            items.forEach((item, itemIndex) => {
+              const state = textState(localProgress, delays[itemIndex] ?? 0);
+
+              gsap.set(item, {
+                autoAlpha: state.opacity,
+                y: state.y,
+              });
+            });
+          });
+        },
+      });
+
+      scheduleRender();
+      loadRemainingFrames();
+    };
+
+    const initializeWhenNeeded = async () => {
+      if (!active) {
+        return;
+      }
+
+      if (!images[0]) {
+        try {
+          images[0] = await loadDecodedImage(frameUrl(0));
+        } catch {
+          active = false;
+          return;
+        }
+      }
+
+      if (!active) {
+        return;
+      }
+
+      drawFrame(0);
+      createTrigger();
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          void initializeWhenNeeded();
+        }
+      },
+      { rootMargin: "0px", threshold: 0.1 },
+    );
+
+    observer.observe(section);
+    void loadDecodedImage(frameUrl(0)).then((image) => {
+      if (!active) {
+        return;
+      }
+
+      images[0] = image;
+      drawFrame(0);
+    }).catch(() => undefined);
 
     return () => {
       active = false;
+      observer.disconnect();
       if (rafId) {
         window.cancelAnimationFrame(rafId);
       }
@@ -257,9 +354,9 @@ export default function FrameSequence() {
               phaseRefs.current[index] = element;
             }}
           >
-            <p className="frame-sequence__eyebrow">{phase.eyebrow}</p>
-            <h2>{phase.title}</h2>
-            <p>{phase.body}</p>
+            <p className="frame-sequence__eyebrow frame-sequence__item">{phase.eyebrow}</p>
+            <h2 className="frame-sequence__item">{phase.title}</h2>
+            <p className="frame-sequence__item">{phase.body}</p>
           </div>
         ))}
       </div>
@@ -273,7 +370,7 @@ export default function FrameSequence() {
         src={FALLBACK_VIDEO_PATH}
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       />
     </section>

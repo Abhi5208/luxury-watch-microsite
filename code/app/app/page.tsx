@@ -1,9 +1,11 @@
 import FrameSequence from "@/components/FrameSequence";
+import HomeMotion from "@/components/HomeMotion";
 
 export default function Home() {
   return (
     <main className="home-story">
-      <section className="story-hero" aria-labelledby="hero-title">
+      <HomeMotion />
+      <section className="story-hero" data-reveal aria-labelledby="hero-title">
         <div className="story-hero__inner">
           <p className="story-kicker">Atelier Noir / Mechanical Study</p>
           <h1 id="hero-title">A watch revealed by restraint.</h1>
@@ -17,7 +19,8 @@ export default function Home() {
       <FrameSequence />
 
       <section
-        className="story-section story-section--left story-section--tall"
+        className="story-section story-section--light story-section--left story-section--tall"
+        data-reveal
         aria-labelledby="craftsmanship-title"
       >
         <div className="story-section__content">
@@ -31,7 +34,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="story-section story-section--right" aria-labelledby="materials-title">
+      <section
+        className="story-section story-section--dark story-section--right"
+        data-reveal
+        aria-labelledby="materials-title"
+      >
         <div className="story-section__content">
           <p className="story-kicker">Materials</p>
           <h2 id="materials-title">Metal, glass, finish.</h2>
@@ -58,7 +65,8 @@ export default function Home() {
       </section>
 
       <section
-        className="story-section story-section--left story-section--compact"
+        className="story-section story-section--light story-section--center story-section--compact"
+        data-reveal
         aria-labelledby="movement-title"
       >
         <div className="story-section__content">
@@ -72,7 +80,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="story-cta" aria-labelledby="cta-title">
+      <section className="story-cta story-cta--dark" data-reveal aria-labelledby="cta-title">
         <div className="story-cta__inner">
           <p className="story-kicker">Private Preview</p>
           <h2 id="cta-title">The collection begins in silence.</h2>

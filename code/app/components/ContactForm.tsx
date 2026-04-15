@@ -55,7 +55,13 @@ export default function ContactForm() {
     <form className="contact-form" noValidate onSubmit={handleSubmit}>
       <label>
         <span>Name</span>
-        <input name="name" type="text" aria-describedby="name-error" />
+        <input
+          name="name"
+          type="text"
+          autoComplete="name"
+          aria-describedby={errors.name ? "name-error" : undefined}
+          aria-invalid={Boolean(errors.name)}
+        />
         {errors.name ? (
           <span className="contact-form__error" id="name-error">
             {errors.name}
@@ -65,7 +71,13 @@ export default function ContactForm() {
 
       <label>
         <span>Email</span>
-        <input name="email" type="email" aria-describedby="email-error" />
+        <input
+          name="email"
+          type="email"
+          autoComplete="email"
+          aria-describedby={errors.email ? "email-error" : undefined}
+          aria-invalid={Boolean(errors.email)}
+        />
         {errors.email ? (
           <span className="contact-form__error" id="email-error">
             {errors.email}
@@ -75,7 +87,12 @@ export default function ContactForm() {
 
       <label>
         <span>Message</span>
-        <textarea name="message" rows={6} aria-describedby="message-error" />
+        <textarea
+          name="message"
+          rows={6}
+          aria-describedby={errors.message ? "message-error" : undefined}
+          aria-invalid={Boolean(errors.message)}
+        />
         {errors.message ? (
           <span className="contact-form__error" id="message-error">
             {errors.message}
@@ -84,7 +101,11 @@ export default function ContactForm() {
       </label>
 
       <button type="submit">Send Message</button>
-      {toast ? <p className="contact-form__toast">{toast}</p> : null}
+      {toast ? (
+        <p className="contact-form__toast" role="status">
+          {toast}
+        </p>
+      ) : null}
     </form>
   );
 }

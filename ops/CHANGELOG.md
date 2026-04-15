@@ -12,7 +12,10 @@ Track meaningful project changes.
 - Added: Next.js Home page frame sequence component with GSAP ScrollTrigger.
 - Added: Shared site shell plus About and Contact page content.
 - Added: Subtle animation-section depth layers synced to scroll progress.
+- Added: Subtle Home page micro-interactions and section entry reveals.
+- Changed: Improved production metadata, contact form accessibility, and deferred frame loading.
 - Changed: Synced animation-section narrative text motion to ScrollTrigger progress.
 - Changed: Upgraded Home page storytelling, section rhythm, and scroll narrative copy.
+- Changed: Refined Home page hierarchy with DESIGN.md chiaroscuro section rhythm.
 - Changed: `[placeholder]`
 - Fixed: `[placeholder]`
