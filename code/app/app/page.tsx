@@ -1,7 +1,9 @@
+import FrameSequence from "@/components/FrameSequence";
+
 export default function Home() {
   return (
     <main>
-      <h1>Luxury Watch Microsite</h1>
+      <FrameSequence />
     </main>
   );
 }
