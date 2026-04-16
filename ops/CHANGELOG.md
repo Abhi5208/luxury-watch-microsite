@@ -17,5 +17,6 @@ Track meaningful project changes.
 - Changed: Synced animation-section narrative text motion to ScrollTrigger progress.
 - Changed: Upgraded Home page storytelling, section rhythm, and scroll narrative copy.
 - Changed: Refined Home page hierarchy with DESIGN.md chiaroscuro section rhythm.
+- Changed: Refined Home styling toward the Stitch editorial reference.
 - Changed: `[placeholder]`
 - Fixed: `[placeholder]`

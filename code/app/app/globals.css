@@ -200,12 +200,13 @@ main {
 
 .home-story {
   background: #000;
-  --story-container: 1200px;
+  --story-container: 1040px;
   --story-red: #da291c;
   --story-near-black: #181818;
   --story-dark-gray: #666;
   --story-mid-gray: #8f8f8f;
-  --story-border: #ccc;
+  --story-border: #d8d8d8;
+  --story-serif: Georgia, "Times New Roman", serif;
 }
 
 .story-hero,
@@ -233,9 +234,10 @@ main {
 }
 
 .story-hero {
-  min-height: 96vh;
-  align-items: end;
-  padding: 152px 32px 120px;
+  min-height: 100vh;
+  place-items: center;
+  padding: 180px 32px 172px;
+  text-align: center;
 }
 
 .story-hero__inner,
@@ -247,15 +249,16 @@ main {
 
 .story-hero__inner {
   display: grid;
-  gap: 34px;
+  justify-items: center;
+  gap: 18px;
 }
 
 .story-kicker {
   margin: 0;
   color: #9c9c9c;
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
-  line-height: 1.5;
+  line-height: 1.25;
   text-transform: uppercase;
 }
 
@@ -266,13 +269,19 @@ main {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 0.88;
-  overflow-wrap: break-word;
+  line-height: 0.82;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  text-transform: uppercase;
+  word-break: normal;
+  hyphens: none;
 }
 
 .story-hero h1 {
-  max-width: 1180px;
-  font-size: 9.5rem;
+  max-width: 1220px;
+  font-family: var(--story-serif);
+  font-size: 10.25rem;
+  letter-spacing: -0.04em;
 }
 
 .story-hero p:not(.story-kicker),
@@ -282,21 +291,21 @@ main {
   max-width: 620px;
   margin: 0;
   color: #c8c8c8;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 0.86rem;
+  line-height: 1.55;
 }
 
 .story-section {
-  min-height: 92vh;
-  padding: 160px 32px;
+  min-height: 82vh;
+  padding: 176px 32px;
 }
 
 .story-section--tall {
-  min-height: 116vh;
+  min-height: 86vh;
 }
 
 .story-section--compact {
-  min-height: 76vh;
+  min-height: 82vh;
 }
 
 .story-section--dark {
@@ -325,76 +334,87 @@ main {
 
 .story-section__content {
   display: grid;
-  gap: 34px;
+  gap: 18px;
 }
 
 .story-section--left .story-section__content {
-  justify-items: start;
-  text-align: left;
-}
-
-.story-section--right .story-section__content {
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: 0;
-  justify-items: start;
-  text-align: left;
-}
-
-.story-section--center .story-section__content {
-  max-width: 920px;
+  max-width: 680px;
   justify-items: center;
   text-align: center;
 }
 
+.story-section--right .story-section__content {
+  max-width: 900px;
+  justify-items: center;
+  text-align: center;
+}
+
+.story-section--center .story-section__content {
+  max-width: 780px;
+  justify-items: center;
+  text-align: center;
+}
+
+.story-section--left p:not(.story-kicker),
+.story-section--right p:not(.story-kicker),
 .story-section--center p:not(.story-kicker) {
-  max-width: 680px;
+  max-width: 470px;
 }
 
 .story-section h2,
 .story-cta h2 {
-  font-size: 6.25rem;
+  font-family: var(--story-serif);
+  font-size: 5.4rem;
 }
 
 .story-section--center h2 {
-  max-width: 900px;
+  max-width: 760px;
 }
 
 .material-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  width: min(100%, 980px);
-  margin-top: 40px;
-  border: 1px solid var(--story-border);
-  background: var(--story-border);
+  width: min(100%, 860px);
+  margin-top: 42px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
 }
 
 .material-grid div {
   display: grid;
   align-content: start;
-  gap: 22px;
-  min-height: 260px;
-  padding: 32px;
-  background: #fff;
-  color: var(--story-near-black);
+  gap: 18px;
+  min-height: 154px;
+  padding: 26px 24px;
+  border-right: 1px solid #2a2a2a;
+  background: #000;
+  color: #fff;
+  text-align: left;
+}
+
+.material-grid div:last-child {
+  border-right: 0;
 }
 
 .material-grid span {
-  color: var(--story-mid-gray);
-  font-size: 0.75rem;
+  color: #b0b0b0;
+  font-size: 0.66rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .material-grid p {
-  color: var(--story-dark-gray);
+  max-width: 210px;
+  color: #d0d0d0;
+  font-size: 0.78rem;
+  line-height: 1.45;
 }
 
 .story-cta {
-  min-height: 96vh;
+  min-height: 92vh;
   place-items: center;
-  padding: 152px 32px;
+  padding: 172px 32px;
   text-align: center;
 }
 
@@ -405,21 +425,21 @@ main {
 .story-cta__inner {
   display: grid;
   justify-items: center;
-  gap: 34px;
+  gap: 18px;
 }
 
 .story-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  margin-top: 10px;
-  padding: 12px 20px;
-  border: 1px solid var(--story-red);
+  min-height: 38px;
+  margin-top: 18px;
+  padding: 10px 18px;
+  border: 1px solid #fff;
   border-radius: 2px;
-  background: var(--story-red);
+  background: transparent;
   color: #fff;
-  font-size: 0.82rem;
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -432,10 +452,10 @@ main {
 }
 
 .story-link:hover {
-  background: #b01e0a;
-  border-color: #b01e0a;
+  background: var(--story-red);
+  border-color: var(--story-red);
   filter: brightness(1.08);
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .frame-sequence {
@@ -582,17 +602,41 @@ main {
     padding-right: 24px;
   }
 
+  .story-hero {
+    min-height: 92vh;
+    padding-top: 120px;
+    padding-bottom: 112px;
+  }
+
+  .story-section,
+  .story-cta {
+    padding-top: 112px;
+    padding-bottom: 112px;
+  }
+
   .story-hero h1 {
-    font-size: 4.25rem;
+    max-width: 340px;
+    font-size: 4.15rem;
+    letter-spacing: -0.035em;
   }
 
   .story-section h2,
   .story-cta h2 {
-    font-size: 3.25rem;
+    font-size: 3.2rem;
   }
 
   .material-grid {
     grid-template-columns: 1fr;
+  }
+
+  .material-grid div {
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .material-grid div:last-child {
+    border-bottom: 0;
   }
 
   .frame-sequence__copy {
@@ -602,11 +646,13 @@ main {
 
 @media (min-width: 641px) and (max-width: 1100px) {
   .story-hero h1 {
-    font-size: 7rem;
+    max-width: 760px;
+    font-size: 6.6rem;
+    letter-spacing: -0.04em;
   }
 
   .story-section h2,
   .story-cta h2 {
-    font-size: 4.75rem;
+    font-size: 4.4rem;
   }
 }
